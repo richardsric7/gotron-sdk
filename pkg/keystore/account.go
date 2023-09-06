@@ -6,7 +6,7 @@ import (
 	"fmt"
 
 	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/crypto/secp256k1"
+	sp "github.com/ethereum/go-ethereum/crypto/secp256k1"
 	"github.com/fbsobreira/gotron-sdk/pkg/address"
 	"github.com/fbsobreira/gotron-sdk/pkg/common"
 	"github.com/fbsobreira/gotron-sdk/pkg/proto/core"
@@ -181,7 +181,7 @@ func RecoverPubkey(hash []byte, signature []byte) (address.Address, error) {
 		signature[64] -= 27
 	}
 
-	sigPublicKey, err := secp256k1.RecoverPubkey(hash, signature)
+	sigPublicKey, err := sp.RecoverPubkey(hash, signature)
 	if err != nil {
 		return nil, err
 	}
